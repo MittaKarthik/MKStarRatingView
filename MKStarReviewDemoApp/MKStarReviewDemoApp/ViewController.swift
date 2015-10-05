@@ -1,0 +1,62 @@
+//
+//  ViewController.swift
+//  MKStarReviewDemoApp
+//
+//  The MIT License (MIT)
+//
+//  Copyright (c) 2015 Karthik Mitta
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+
+import UIKit
+
+class ViewController: UIViewController, MKStarRatingDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        let ratingView : MKStarRatingView = MKStarRatingView(frame: CGRectMake(50  , 200, 200, 50))
+        
+        ratingView.backgroundColor = UIColor.whiteColor()
+        ratingView.normalStarImage = UIImage(named: "star-template")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        ratingView.highlightedStarImage = UIImage(named: "star-highlighted-template")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        ratingView.supportPartialFill = true
+        ratingView.maxRatingStars = 5
+        ratingView.enableTouch = true
+        ratingView.rating = 2.5
+        ratingView.delegate = self
+        self.view.addSubview(ratingView);
+        ratingView.setNeedsDisplay()
+
+    }
+
+    
+    func selectedStarRating(rating: Float) {
+        print(rating)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+
